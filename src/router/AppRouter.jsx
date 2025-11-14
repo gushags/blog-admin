@@ -1,13 +1,13 @@
 // AppRouter.jsx
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AuthLogin from '../pages/AuthPages/AuthLogin';
+import HomePage from '../pages/HomePage/HomePage';
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<AuthLogin />} />
+        <Route path='/' element={<HomePage />} />
       </Routes>
     </Router>
   );
