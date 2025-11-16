@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import AdminRoute from '../components/AdminRoute';
 import AuthLayout from '../pages/AuthPage/AuthLayout/AuthLayout';
+import Users from '../pages/Users/Users';
+import Posts from '../pages/Posts/Posts';
 
 export default function AppRouter() {
   return (
@@ -20,6 +22,8 @@ export default function AppRouter() {
           }
         />
         <Route path='/login' element={<AuthLayout />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/posts' element={<Posts />} />
       </Routes>
     </Router>
   );
