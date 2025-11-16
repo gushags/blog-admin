@@ -29,16 +29,18 @@ function AuthLogin() {
       const result = await response.json();
 
       if (!response.ok) {
+        setUsername('');
+        setPassword('');
         throw new Error(`${result.message}`);
       }
 
       login(result.token);
       saveUser(result.user);
+      navigate('/dashboard');
     } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
-      navigate('/dashboard');
     }
   };
 

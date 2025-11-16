@@ -1,0 +1,12 @@
+/* Dashboard.module.css */
+
+.card {
+  border: 2px solid green;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 10px 35px;
+}

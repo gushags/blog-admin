@@ -1,0 +1,13 @@
+/* Navigation.module.css */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 30px;
+}
+
+img {
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid red;
+}

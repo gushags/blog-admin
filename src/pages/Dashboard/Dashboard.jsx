@@ -3,9 +3,10 @@
 import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import style from './Dashboard.module.css';
 
 function Dashboard() {
-  const { logout, authToken } = useContext(AuthContext);
+  const { authToken, user } = useContext(AuthContext);
   const [users, setUsers] = useState();
   const [posts, setPosts] = useState();
   const [comments, setComments] = useState(0);
@@ -59,18 +60,30 @@ function Dashboard() {
       {users && posts && (
         <>
           <div>The Big Blog Dashboard</div>
-          <div>
-            <section>Users</section>
+          <div className={style.cards}>
+            <Link to={`/users/${user.id}`}>
+              <div className={style.card}>
+                <div>{user.username}</div>
+                <p>
+                  {user.firstname} {user.lastname}
+                </p>
+                <p>Edit</p>
+              </div>
+            </Link>
             <Link to={'/users'}>
-              <p>Total users: {users.length}</p>
+              <div className={style.card}>
+                <div>Manage Users</div>
+                <p>Total users: {users.length}</p>
+              </div>
             </Link>
             <Link to={'/posts'}>
-              <section>Posts and Comments</section>
-              <div>Total posts: {posts.length}</div>
-              <div>Total Comments: {comments}</div>
+              <div className={style.card}>
+                <div>Manage Posts and Comments</div>
+                <p>Total posts: {posts.length}</p>
+                <p>Total Comments: {comments}</p>
+              </div>
             </Link>
           </div>
-          <div onClick={logout}>Logout</div>
         </>
       )}
     </>

@@ -42,7 +42,7 @@ function AuthRegister({ setIsLogin }) {
       };
 
       console.log('Try to register');
-      const response = await fetch(API_URL + `/admin/auth/register`, {
+      const response = await fetch(API_URL + `/auth/admin/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

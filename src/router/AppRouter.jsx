@@ -7,23 +7,48 @@ import AdminRoute from '../components/AdminRoute';
 import AuthLayout from '../pages/AuthPage/AuthLayout/AuthLayout';
 import Users from '../pages/Users/Users';
 import Posts from '../pages/Posts/Posts';
+import UserProfile from '../pages/UserProfile/UserProfile';
+import RootLayout from '../components/RootLayout';
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Navigate to='/dashboard' replace />} />
-        <Route
-          path='/dashboard'
-          element={
-            <AdminRoute>
-              <Dashboard />
-            </AdminRoute>
-          }
-        />
-        <Route path='/login' element={<AuthLayout />} />
-        <Route path='/users' element={<Users />} />
-        <Route path='/posts' element={<Posts />} />
+        <Route path='/' element={<RootLayout />}>
+          <Route
+            path='dashboard'
+            element={
+              <AdminRoute>
+                <Dashboard />
+              </AdminRoute>
+            }
+          />
+          <Route path='login' element={<AuthLayout />} />
+          <Route
+            path='users'
+            element={
+              <AdminRoute>
+                <Users />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path='posts'
+            element={
+              <AdminRoute>
+                <Posts />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path='users/:id'
+            element={
+              <AdminRoute>
+                <UserProfile />
+              </AdminRoute>
+            }
+          />
+        </Route>
       </Routes>
     </Router>
   );
