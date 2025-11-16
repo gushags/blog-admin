@@ -13,6 +13,7 @@ function AuthRegister({ setIsLogin }) {
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [pwd, setPwd] = useState('');
   const [confirmPwd, setConfirmPwd] = useState('');
+  const [admincode, setAdmincode] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +21,8 @@ function AuthRegister({ setIsLogin }) {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    if (!username || !email || !firstname || !pwd || !confirmPwd) return;
+    if (!username || !email || !firstname || !pwd || !confirmPwd || !admincode)
+      return;
     if (pwd !== confirmPwd) {
       setError({ message: 'Passwords must match.' });
       setConfirmPwd('');
@@ -36,10 +38,11 @@ function AuthRegister({ setIsLogin }) {
         avatarUrl,
         websiteUrl,
         pwd,
+        admincode,
       };
 
       console.log('Try to register');
-      const response = await fetch(API_URL + `/auth/register`, {
+      const response = await fetch(API_URL + `/admin/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,6 +60,7 @@ function AuthRegister({ setIsLogin }) {
       setAvatarUrl('');
       setWebsiteUrl('');
       setPwd('');
+      setAdmincode('');
       setError(null);
 
       setIsLogin(true);
@@ -150,6 +154,15 @@ function AuthRegister({ setIsLogin }) {
           value={confirmPwd}
           autoComplete='none'
           onChange={(e) => setConfirmPwd(e.target.value)}
+          required
+        />
+        <label htmlFor='admincode'>Admin Code</label>
+        <input
+          type='password'
+          name='admincode'
+          value={admincode}
+          autoComplete='none'
+          onChange={(e) => setAdmincode(e.target.value)}
           required
         />
         <button type='submit'>Register</button>

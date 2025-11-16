@@ -1,6 +1,7 @@
 // AuthLogin.jsx
 
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -10,6 +11,7 @@ function AuthLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault(); // prevent page reload
@@ -18,23 +20,25 @@ function AuthLogin() {
 
     try {
       const postData = { username, password };
-      const response = await fetch(API_URL + `/auth/login`, {
+      const response = await fetch(API_URL + `/auth/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(postData),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`${result.message}`);
       }
 
-      const result = await response.json();
       login(result.token);
       saveUser(result.user);
     } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
+      navigate('/dashboard');
     }
   };
 

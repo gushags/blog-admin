@@ -3,8 +3,11 @@
 import AuthLogin from '../AuthLogin/AuthLogin';
 import AuthRegister from '../AuthRegister/AuthRegister';
 import styles from './AuthLayout.module.css';
+import { AuthContext } from '../../../context/AuthContext';
+import { useContext } from 'react';
 
-function AuthLayout({ isLogin, setIsLogin }) {
+function AuthLayout() {
+  const { isLogin, setIsLogin } = useContext(AuthContext);
   return (
     <>
       {isLogin ? (
