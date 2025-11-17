@@ -5,6 +5,29 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import style from './Dashboard.module.css';
 
+function countComments(comments) {
+  if (!comments || comments.length === 0) return 0;
+
+  let total = 0;
+
+  for (const comment of comments) {
+    total += 1;
+    total += countComments(comment.replies);
+  }
+
+  return total;
+}
+
+function countCommentsForPosts(posts) {
+  let total = 0;
+  for (const post of posts) {
+    if (post.comments) {
+      total += countComments(post.comments);
+    }
+  }
+  return total;
+}
+
 function Dashboard() {
   const { authToken, user } = useContext(AuthContext);
   const [users, setUsers] = useState();
@@ -24,9 +47,8 @@ function Dashboard() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
-        console.log(result);
         setPosts(result.data);
-        setComments(countComments(result.data));
+        setComments(countCommentsForPosts(result.data));
 
         const userRes = await fetch(API_URL + `/users`, {
           headers: { Authorization: `Bearer ${authToken}` },
@@ -46,12 +68,6 @@ function Dashboard() {
     fetchAllData();
   }, [API_URL, authToken]);
 
-  const countComments = (posts) => {
-    let count = 0;
-    posts.map((post) => (count += post.comments.length));
-    return count;
-  };
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -68,6 +84,11 @@ function Dashboard() {
                   {user.firstname} {user.lastname}
                 </p>
                 <p>Edit</p>
+              </div>
+            </Link>
+            <Link to={'/create'}>
+              <div className={style.card}>
+                <div>Write a Blog Post</div>
               </div>
             </Link>
             <Link to={'/users'}>

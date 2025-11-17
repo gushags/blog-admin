@@ -1,7 +1,6 @@
 // AppRouter.jsx
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import AdminRoute from '../components/AdminRoute';
 import AuthLayout from '../pages/AuthPage/AuthLayout/AuthLayout';
@@ -9,6 +8,7 @@ import Users from '../pages/Users/Users';
 import Posts from '../pages/Posts/Posts';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import RootLayout from '../components/RootLayout';
+import WritePost from '../pages/WritePost/WritePost';
 
 export default function AppRouter() {
   return (
@@ -37,6 +37,14 @@ export default function AppRouter() {
             element={
               <AdminRoute>
                 <Posts />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path={'create'}
+            element={
+              <AdminRoute>
+                <WritePost />
               </AdminRoute>
             }
           />

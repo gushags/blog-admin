@@ -73,27 +73,32 @@ function UserEdit({ id, authToken, fetchUser, onSuccess }) {
       {error ? <div>Error: {error.message}</div> : ''}
       <label htmlFor='firstname'>First Name</label>
       <input
-        type='text'
+        id='firstname'
         name='firstname'
+        type='text'
         value={firstname}
         onChange={(e) => setFirstname(e.target.value)}
       />
       <label htmlFor='lastname'>Last Name</label>
       <input
-        type='text'
+        id='lastname'
         name='lastname'
+        type='text'
         value={lastname}
         onChange={(e) => setLastname(e.target.value)}
       />
       <label htmlFor='email'>Email</label>
       <input
-        type='email'
+        id='email'
         name='email'
+        type='email'
         value={email}
+        autoComplete='email'
         onChange={(e) => setEmail(e.target.value)}
       />
       <label htmlFor='bio'>Bio</label>
       <textarea
+        id='bio'
         name='bio'
         cols='60'
         rows='3'
@@ -102,36 +107,45 @@ function UserEdit({ id, authToken, fetchUser, onSuccess }) {
       ></textarea>
       <label htmlFor='websiteUrl'>Website (url)</label>
       <input
-        type='text'
+        id='websiteUrl'
         name='websiteUrl'
+        type='text'
         value={websiteUrl}
         onChange={(e) => setWebsiteUrl(e.target.value)}
       />
       <label htmlFor='avatarUrl'>Avatar (url)</label>
       <input
-        type='text'
+        id='avatarUrl'
         name='avatarUrl'
+        type='text'
+        autoComplete='none'
         value={avatarUrl}
         onChange={(e) => setAvatarUrl(e.target.value)}
       />
       <label htmlFor='currPassword'>Current Password</label>
       <input
-        type='password'
+        id='currPassword'
         name='currPassword'
+        type='password'
         value={currPassword}
+        autoComplete='current-password'
         onChange={(e) => setCurrPassword(e.target.value)}
       />
       <label htmlFor='newPassword'>New Password</label>
       <input
-        type='password'
+        id='newPassword'
         name='newPassword'
+        type='password'
+        autoComplete='new-password'
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
       <label htmlFor='confirmPassword'>Confirm Password</label>
       <input
-        type='password'
+        id='confirmPassword'
         name='confirmPassword'
+        type='password'
+        autoComplete='new-password'
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
