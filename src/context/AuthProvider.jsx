@@ -23,6 +23,9 @@ function AuthProvider({ children }) {
   const logout = useCallback(() => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('draftPost');
+    localStorage.removeItem('tinymce-custom-colors-forecolor');
+    localStorage.removeItem('tinymce-custom-colors-hilitecolor');
     setAuthToken(null);
   }, []);
 
