@@ -155,7 +155,7 @@ function UserEdit({ id, authToken, fetchUser, onSuccess }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          navigate('/dashboard');
+          navigate(-1);
         }}
       >
         Cancel
