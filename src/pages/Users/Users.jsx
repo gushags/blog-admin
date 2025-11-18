@@ -92,26 +92,28 @@ function Users() {
           <div>Users Page</div>
           <ul>
             {users.map((u) => (
-              <div key={u.id}>
+              <div key={u.id} className={style.usersFlex}>
                 <li className={u.isAdmin ? style.admin : ''}>
                   {u.firstname} {u.lastname} -- ({u.username})
                 </li>
-                {u.id !== user.id && (
-                  <button onClick={() => handleMakeAdmin(u.id, u.isAdmin)}>
-                    {u.isAdmin ? 'Revoke Admin' : 'Make Admin'}
+                <div>
+                  {u.id !== user.id && (
+                    <button onClick={() => handleMakeAdmin(u.id, u.isAdmin)}>
+                      {u.isAdmin ? 'Revoke Admin' : 'Make Admin'}
+                    </button>
+                  )}
+                  <button onClick={() => navigate(`/users/${u.id}`)}>
+                    Edit User
                   </button>
-                )}
-                <button onClick={() => navigate(`/users/${u.id}`)}>
-                  Edit User
-                </button>
-                {u.id !== user.id && (
-                  <button
-                    onClick={() => handleDelete(u.id)}
-                    className={style.danger}
-                  >
-                    DELETE
-                  </button>
-                )}
+                  {u.id !== user.id && (
+                    <button
+                      onClick={() => handleDelete(u.id)}
+                      className={style.danger}
+                    >
+                      DELETE
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </ul>

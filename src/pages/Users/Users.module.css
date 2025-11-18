@@ -1,5 +1,18 @@
 /* Users.module.css */
 
+button {
+  margin: 0 10px;
+  border-color: black;
+}
+button:hover {
+  border-color: black;
+  background-color: rgb(199, 199, 199);
+}
+
+li {
+  margin-right: 40px;
+}
+
 .admin {
   color: red;
 }
@@ -19,4 +32,11 @@
 .danger:hover {
   border-color: red;
   background-color: rgb(234, 133, 150);
+}
+.usersFlex {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
+  justify-content: space-between;
 }
