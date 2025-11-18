@@ -1,0 +1,22 @@
+/* Users.module.css */
+
+.admin {
+  color: red;
+}
+
+.admin::after {
+  content: '(ADMIN)';
+  font-size: xx-small;
+  color: red;
+  padding-left: 7px;
+}
+
+.danger {
+  border-color: red;
+  color: red;
+  background-color: pink;
+}
+.danger:hover {
+  border-color: red;
+  background-color: rgb(234, 133, 150);
+}

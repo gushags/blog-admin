@@ -41,7 +41,6 @@ function PreviewPost({
       if (!response.ok) {
         throw new Error(`HTTP Error! ${response.status} error`);
       }
-      //   setIsEdit(!isEdit);
       setContent('');
       setTitle('');
       localStorage.removeItem('draftPost');

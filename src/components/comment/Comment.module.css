@@ -1,0 +1,15 @@
+/* Comment.module.css */
+
+.linkText {
+  color: blue;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.linkText:hover {
+  color: lightblue;
+}
+
+.reply {
+  display: flex;
+}

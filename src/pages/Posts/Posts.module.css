@@ -1,0 +1,16 @@
+/* Posts.module.css */
+
+.postTitle {
+  display: flex;
+  gap: 40px;
+}
+
+.danger {
+  border-color: red;
+  color: red;
+  background-color: pink;
+}
+.danger:hover {
+  border-color: red;
+  background-color: rgb(234, 133, 150);
+}

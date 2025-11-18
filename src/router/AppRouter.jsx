@@ -9,6 +9,7 @@ import Posts from '../pages/Posts/Posts';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import RootLayout from '../components/RootLayout';
 import WritePost from '../pages/WritePost/WritePost';
+import PostDetail from '../pages/PostDetail/PostDetail';
 
 export default function AppRouter() {
   return (
@@ -53,6 +54,14 @@ export default function AppRouter() {
             element={
               <AdminRoute>
                 <UserProfile />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path='posts/:id'
+            element={
+              <AdminRoute>
+                <PostDetail />
               </AdminRoute>
             }
           />
