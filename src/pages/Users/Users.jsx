@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import style from './Users.module.css';
 
 function Users() {
-  const { authToken } = useContext(AuthContext);
+  const { authToken, user } = useContext(AuthContext);
   const [users, setUsers] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -91,23 +91,27 @@ function Users() {
         <>
           <div>Users Page</div>
           <ul>
-            {users.map((user) => (
-              <div key={user.id}>
-                <li className={user.isAdmin ? style.admin : ''}>
-                  {user.firstname} {user.lastname} -- ({user.username})
+            {users.map((u) => (
+              <div key={u.id}>
+                <li className={u.isAdmin ? style.admin : ''}>
+                  {u.firstname} {u.lastname} -- ({u.username})
                 </li>
-                <button onClick={() => handleMakeAdmin(user.id, user.isAdmin)}>
-                  {user.isAdmin ? 'Revoke Admin' : 'Make Admin'}
-                </button>
-                <button onClick={() => navigate(`/users/${user.id}`)}>
+                {u.id !== user.id && (
+                  <button onClick={() => handleMakeAdmin(u.id, u.isAdmin)}>
+                    {u.isAdmin ? 'Revoke Admin' : 'Make Admin'}
+                  </button>
+                )}
+                <button onClick={() => navigate(`/users/${u.id}`)}>
                   Edit User
                 </button>
-                <button
-                  onClick={() => handleDelete(user.id)}
-                  className={style.danger}
-                >
-                  DELETE
-                </button>
+                {u.id !== user.id && (
+                  <button
+                    onClick={() => handleDelete(u.id)}
+                    className={style.danger}
+                  >
+                    DELETE
+                  </button>
+                )}
               </div>
             ))}
           </ul>
